@@ -242,13 +242,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6363527570841237365, guid: eac5629f7abe7c3419e140fe7ab390f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483992514039674141, guid: eac5629f7abe7c3419e140fe7ab390f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: eac5629f7abe7c3419e140fe7ab390f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eac5629f7abe7c3419e140fe7ab390f5, type: 3}
---- !u!4 &351185631 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -2049986287980790164, guid: eac5629f7abe7c3419e140fe7ab390f5, type: 3}
-  m_PrefabInstance: {fileID: 193225164}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &641008523
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +537,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 351185631}
+    m_TransformParent: {fileID: 1918672076}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6e606fb7b6006c44baf31b75948ccd6e, type: 3}
       propertyPath: m_RootOrder
@@ -1004,7 +1011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.3
   rotateSpeed: 5
-  modelTransform: {fileID: 0}
+  animator: {fileID: 1918672080}
 --- !u!114 &1918672078
 MonoBehaviour:
   m_ObjectHideFlags: 0

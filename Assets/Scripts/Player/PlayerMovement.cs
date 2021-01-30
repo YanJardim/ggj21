@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
 	public float speed = 5;
 	public float rotateSpeed = 5;
-	public Transform modelTransform;
+	[Header("References")]
+	public Animator animator;
 	private Rigidbody _rb;
 	private Vector2 _dir = Vector2.zero;
 	private PlayerInputs _inputs;
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 	void Update()
 	{
 		HandleRotation();
+		animator.SetBool("isRunning", _dir != Vector2.zero);
 	}
 
 	// Update is called once per frame
