@@ -1,18 +1,28 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemReturnSpot : MonoBehaviour
+public class ItemReturnSpot : TrackTrigger
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public List<Item> list;
+	public List<Item> items;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool ReturnItem(Item item){
+		if(!list.Contains(item)) {
+			Debug.LogWarning("We don't accept this kind of item");
+			return false;
+		};
+		if(items.Contains(item)){
+			Debug.LogWarning("We already have this item!");
+			return false;
+		}
+
+		items.Add(item);
+		return true;
+	}
+
+	public bool CheckList(){
+		return list.All(items.Contains);
+	}
 }

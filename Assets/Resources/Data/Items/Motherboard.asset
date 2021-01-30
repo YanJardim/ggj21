@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28519ee832ae89e4497eea96e8a10571, type: 3}
-  m_Name: Item
+  m_Name: Motherboard
   m_EditorClassIdentifier: 
   name: Test
   model: {fileID: 7916403994455307289, guid: c5c643bf466f1934c9bf46e477a182c2, type: 3}
