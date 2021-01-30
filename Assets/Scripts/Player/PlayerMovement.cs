@@ -47,7 +47,9 @@ public class PlayerMovement : MonoBehaviour
 	void HandleRotation()
 	{
 		if(_dir == Vector2.zero) return;
-		
-		transform.rotation = Quaternion.Normalize(Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(currentPos - previousPos), Time.fixedDeltaTime * rotateSpeed));
+		var newRot = Quaternion.Normalize(Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(currentPos - previousPos), Time.fixedDeltaTime * rotateSpeed));
+		newRot.x = 0;
+		newRot.z = 0;
+		transform.rotation = newRot;
 	}
 }
