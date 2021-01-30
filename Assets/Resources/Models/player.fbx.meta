@@ -9,6 +9,15 @@ ModelImporter:
   - first:
       74: -7132635126582189261
     second: Armature|player_idle
+  - first:
+      74: -9219100617316212870
+    second: player_idle
+  - first:
+      74: -1056831734447855652
+    second: radar_spin
+  - first:
+      74: -4155207466423397597
+    second: Armature|radar_spin
   externalObjects:
   - first:
       type: UnityEngine:Material
