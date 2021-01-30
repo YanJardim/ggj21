@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-	public PlayerWeapon hand;
+	public PlayerWeapon currentWeapon;
 	public Transform weaponHolderTransform;
+	public Item hand;
 	private PlayerInputs _inputs;
 	private GameObject _spawnedWeapon;
-	public ItemSpot _currentItemSpot = null;
+	private ItemSpot _currentItemSpot = null;
 
 	void Awake()
 	{
@@ -40,18 +41,19 @@ public class Player : MonoBehaviour
 
 	void Update()
 	{
-		if (hand.recurring)
+		if (currentWeapon.recurring)
 		{
-			hand.Perform(transform.position);
+			currentWeapon.Perform(transform.position);
 		}
 	}
 
 	void OnPressActionButton()
 	{
-		if (hand.recurring || _currentItemSpot == null) return;
+		if (currentWeapon.recurring || _currentItemSpot == null || hand) return;
 
-		hand.Perform(transform.position);
-		_currentItemSpot.Take();
+		currentWeapon.Perform(transform.position);
+		hand = _currentItemSpot.Take();
+		Debug.Log($"Over {hand.name}");
 	}
 	void DestroyWeapon()
 	{
@@ -59,19 +61,19 @@ public class Player : MonoBehaviour
 	}
 	void SpawnWeapon()
 	{
-		_spawnedWeapon = Instantiate(hand.model, weaponHolderTransform);
+		_spawnedWeapon = Instantiate(currentWeapon.model, weaponHolderTransform);
 		_spawnedWeapon.transform.localPosition = Vector3.zero;
 	}
 	void ChangeWeapon(PlayerWeapon weapon)
 	{
 		DestroyWeapon();
-		this.hand = weapon;
+		this.currentWeapon = weapon;
 		SpawnWeapon();
 	}
 
 	void OnPlayerHitItemSpot(bool isOver, ItemSpot itemSpot)
 	{
-		Debug.Log($"Over {isOver} {itemSpot.name}");
+		
 		if (!isOver)
 		{
 			_currentItemSpot = null;
