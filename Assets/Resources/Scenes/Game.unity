@@ -1024,6 +1024,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193af9a85dbd2f543b3ac3d74d4e2376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diggingTime: 4
+  isDigging: 0
   shovel: {fileID: 11400000, guid: b7af39a235b837b4b8ecd4a8a81ad7ba, type: 2}
   metalDetector: {fileID: 0}
   hand: {fileID: 0}

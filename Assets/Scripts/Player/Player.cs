@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+	[Header("Settings")]
+	public float diggingTime = 2;
+	public bool isDigging = false;
+	[Header("References")]
 	public PlayerWeapon shovel, metalDetector;
 	public Item hand;
-	public bool isDigging = false;
 	private PlayerInputs _inputs;
 	private GameObject _spawnedWeapon;
 	private ItemSpot _currentItemSpot = null;
 	private Animator _animator;
-
+	private float diggingTimer = 0;
 	void Awake()
 	{
 		_inputs = new PlayerInputs();
@@ -46,6 +49,17 @@ public class Player : MonoBehaviour
 
 	void HandleAction()
 	{
+		if(isDigging){
+			if (_currentItemSpot == null || hand) {
+				isDigging = false;
+				return;
+			};
+			diggingTimer += Time.deltaTime;
+			if(diggingTimer > diggingTime){
+				hand = _currentItemSpot.Take();
+				isDigging = false;
+			}
+		}
 		_animator.SetBool("isDigging", isDigging);
 	}
 
@@ -56,10 +70,10 @@ public class Player : MonoBehaviour
 	void OnPressActionButton()
 	{
 		isDigging = true;
-		if (_currentItemSpot == null || hand) return;
+		
 
 		shovel.Perform(transform.position);
-		hand = _currentItemSpot.Take();
+		
 		Debug.Log($"Over {hand.name}");
 	}
 	void DestroyWeapon()
