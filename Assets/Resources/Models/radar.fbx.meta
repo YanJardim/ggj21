@@ -1,44 +1,14 @@
 fileFormatVersion: 2
-guid: eac5629f7abe7c3419e140fe7ab390f5
+guid: 6e606fb7b6006c44baf31b75948ccd6e
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable:
-  - first:
-      74: -3880581976594992817
-    second: ArmatureAction
-  - first:
-      74: -7132635126582189261
-    second: Armature|player_idle
-  - first:
-      74: -9219100617316212870
-    second: player_idle
-  - first:
-      74: -1056831734447855652
-    second: radar_spin
-  - first:
-      74: -4155207466423397597
-    second: Armature|radar_spin
+  internalIDToNameTable: []
   externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: bbc4b4ed6b5a6ea4bbcc041b79fda479, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_player
-    second: {fileID: 2100000, guid: a901cdc575d31284da905a9686f0296f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: mat_shovel
     second: {fileID: 2100000, guid: 35ed5de8da84dea4da4a3747ecc70a25, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: tex_player
-    second: {fileID: 2800000, guid: 98c9e07f78098704e8e2fc582007f786, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
