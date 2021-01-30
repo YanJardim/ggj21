@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+	[Header("Player settings")]
 	public float speed = 5;
 	public float rotateSpeed = 5;
 	[Header("References")]
@@ -12,9 +14,11 @@ public class PlayerMovement : MonoBehaviour
 	private Vector2 _dir = Vector2.zero;
 	private PlayerInputs _inputs;
 	private Vector3 currentPos, previousPos;
+	private Player _player;
 
 	void Awake()
 	{
+		_player = GetComponent<Player>();
 		_rb = GetComponent<Rigidbody>();
 		_inputs = new PlayerInputs();
 		HandleActions();
@@ -34,12 +38,13 @@ public class PlayerMovement : MonoBehaviour
 	void Update()
 	{
 		HandleRotation();
-		animator.SetBool("isRunning", _dir != Vector2.zero);
+		animator.SetBool("isRunning", _dir != Vector2.zero || _player.isDigging == true);
 	}
 
 	// Update is called once per frame
 	void FixedUpdate()
 	{
+		if(_player.isDigging == true) return;
 		previousPos = currentPos;
 		currentPos = transform.position;
 		var newDir = new Vector3(_dir.x, 0, _dir.y);
