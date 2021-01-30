@@ -14,9 +14,17 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Dig",
+                    "type": "Value",
+                    "id": "c38e187b-a544-42ff-b5a6-04c3d42f9f5c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Action",
                     "type": "Button",
-                    "id": "c38e187b-a544-42ff-b5a6-04c3d42f9f5c",
+                    "id": "d359d604-94af-4d67-a233-f6fbc9379901",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -191,7 +199,29 @@
                 {
                     "name": "",
                     "id": "e243aa22-630b-498d-97be-fd184a18c514",
-                    "path": "<Keyboard>/space",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dig",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aa6b979a-b230-4f27-9b4b-36d5b9ea51b0",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dig",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1024ed9c-e184-41df-85e5-fd37c5ea82e7",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -201,8 +231,8 @@
                 },
                 {
                     "name": "",
-                    "id": "aa6b979a-b230-4f27-9b4b-36d5b9ea51b0",
-                    "path": "<DualShockGamepad>/buttonSouth",
+                    "id": "9a6f3cfb-7518-4379-b7b7-c9ce95f5c67f",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

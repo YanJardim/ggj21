@@ -27,9 +27,17 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Dig"",
+                    ""type"": ""Value"",
+                    ""id"": ""c38e187b-a544-42ff-b5a6-04c3d42f9f5c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Action"",
                     ""type"": ""Button"",
-                    ""id"": ""c38e187b-a544-42ff-b5a6-04c3d42f9f5c"",
+                    ""id"": ""d359d604-94af-4d67-a233-f6fbc9379901"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -204,7 +212,29 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e243aa22-630b-498d-97be-fd184a18c514"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dig"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aa6b979a-b230-4f27-9b4b-36d5b9ea51b0"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dig"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1024ed9c-e184-41df-85e5-fd37c5ea82e7"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -214,8 +244,8 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""aa6b979a-b230-4f27-9b4b-36d5b9ea51b0"",
-                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""id"": ""9a6f3cfb-7518-4379-b7b7-c9ce95f5c67f"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -290,6 +320,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         // Game
         m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
         m_Game_Movement = m_Game.FindAction("Movement", throwIfNotFound: true);
+        m_Game_Dig = m_Game.FindAction("Dig", throwIfNotFound: true);
         m_Game_Action = m_Game.FindAction("Action", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
@@ -344,12 +375,14 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Game;
     private IGameActions m_GameActionsCallbackInterface;
     private readonly InputAction m_Game_Movement;
+    private readonly InputAction m_Game_Dig;
     private readonly InputAction m_Game_Action;
     public struct GameActions
     {
         private @PlayerInputs m_Wrapper;
         public GameActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Game_Movement;
+        public InputAction @Dig => m_Wrapper.m_Game_Dig;
         public InputAction @Action => m_Wrapper.m_Game_Action;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
@@ -363,6 +396,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_GameActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnMovement;
+                @Dig.started -= m_Wrapper.m_GameActionsCallbackInterface.OnDig;
+                @Dig.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnDig;
+                @Dig.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnDig;
                 @Action.started -= m_Wrapper.m_GameActionsCallbackInterface.OnAction;
                 @Action.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnAction;
                 @Action.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnAction;
@@ -373,6 +409,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Dig.started += instance.OnDig;
+                @Dig.performed += instance.OnDig;
+                @Dig.canceled += instance.OnDig;
                 @Action.started += instance.OnAction;
                 @Action.performed += instance.OnAction;
                 @Action.canceled += instance.OnAction;
@@ -425,6 +464,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     public interface IGameActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnDig(InputAction.CallbackContext context);
         void OnAction(InputAction.CallbackContext context);
     }
     public interface IMenuActions
