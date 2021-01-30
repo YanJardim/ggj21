@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-	public PlayerWeapon currentWeapon;
-	public Transform weaponHolderTransform;
+	public PlayerWeapon shovel, metalDetector;
 	public Item hand;
 	private PlayerInputs _inputs;
 	private GameObject _spawnedWeapon;
@@ -34,24 +33,16 @@ public class Player : MonoBehaviour
 		ItemSpot.OnPlayer -= OnPlayerHitItemSpot;
 	}
 
-	void Start()
-	{
-		SpawnWeapon();
-	}
-
 	void Update()
 	{
-		if (currentWeapon.recurring)
-		{
-			currentWeapon.Perform(transform.position);
-		}
+		metalDetector?.Perform(transform.position);
 	}
 
 	void OnPressActionButton()
 	{
-		if (currentWeapon.recurring || _currentItemSpot == null || hand) return;
+		if (_currentItemSpot == null || hand) return;
 
-		currentWeapon.Perform(transform.position);
+		shovel.Perform(transform.position);
 		hand = _currentItemSpot.Take();
 		Debug.Log($"Over {hand.name}");
 	}
@@ -59,21 +50,10 @@ public class Player : MonoBehaviour
 	{
 		Destroy(_spawnedWeapon);
 	}
-	void SpawnWeapon()
-	{
-		_spawnedWeapon = Instantiate(currentWeapon.model, weaponHolderTransform);
-		_spawnedWeapon.transform.localPosition = Vector3.zero;
-	}
-	void ChangeWeapon(PlayerWeapon weapon)
-	{
-		DestroyWeapon();
-		this.currentWeapon = weapon;
-		SpawnWeapon();
-	}
 
 	void OnPlayerHitItemSpot(bool isOver, ItemSpot itemSpot)
 	{
-		
+
 		if (!isOver)
 		{
 			_currentItemSpot = null;
