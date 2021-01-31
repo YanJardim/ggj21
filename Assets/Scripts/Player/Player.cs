@@ -100,12 +100,10 @@ public class Player : MonoBehaviour
 				case "ReturnItem":
 					HandleReturnItem(collider.GetComponent<ItemReturnSpot>());
 					break;
-				case "TrashCan":
-					hand = null;
-					break;
 				case "Chest":
 					var chest = collider.GetComponent<Chest>();
 					if (chest.hasItem()){
+						if(hand) return;
 						var item = chest.Give();
 						itemPreview.ChangeItem(item);
 						hand = item;
