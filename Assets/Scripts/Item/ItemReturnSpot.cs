@@ -2,6 +2,7 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ItemReturnSpot : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ItemReturnSpot : MonoBehaviour
 	public AudioClip successAudio;
 	public AudioClip nopeSound;
 	public Item currentItem;
+	public static event Action<ItemReturnSpot> OnReturnItem;
 
 	void Awake()
 	{
@@ -39,6 +41,7 @@ public class ItemReturnSpot : MonoBehaviour
 		AudioManager.Instance.PlaySFX(successAudio);
 		ChangeToNextItem();
 		items.Add(item);
+		OnReturnItem?.Invoke(this);
 		return true;
 	}
 
