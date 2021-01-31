@@ -9,5 +9,4 @@ public class AudioManager : Singleton<AudioManager>
 	public void PlaySFX(AudioClip clip){
 		sfxSource.PlayOneShot(clip);
 	}
-
 }

@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 	public LayerMask actionMask;
 	[Header("References")]
 	public PlayerWeapon shovel, metalDetector;
+	public AudioClip diggingSound;
 	public Animator animator;
 	public Item hand;
 	private PlayerInputs _inputs;
@@ -54,20 +55,23 @@ public class Player : MonoBehaviour
 	{
 		if (isDigging)
 		{
-            if (_currentItemSpot != null) {
-                LookAtTarget(_currentItemSpot.top.transform);
-            }
-           
-            if (_currentItemSpot == null || hand)
+			if (_currentItemSpot != null && _currentItemSpot.top)
+			{
+				LookAtTarget(_currentItemSpot.top.transform);
+			}
+
+			if (_currentItemSpot == null || hand)
 			{
 				isDigging = false;
 				return;
 			};
-			if(!_currentItemSpot.item){
+			if (!_currentItemSpot.item)
+			{
 				isDigging = false;
 				return;
 			}
 			diggingTimer += Time.deltaTime;
+
 			if (diggingTimer > diggingTime)
 			{
 				hand = _currentItemSpot.Take();
@@ -91,7 +95,7 @@ public class Player : MonoBehaviour
 			switch (collider.tag)
 			{
 				case "ReturnItem":
-                    HandleReturnItem(collider.GetComponent<ItemReturnSpot>());
+					HandleReturnItem(collider.GetComponent<ItemReturnSpot>());
 					break;
 				case "TrashCan":
 					hand = null;
@@ -103,12 +107,12 @@ public class Player : MonoBehaviour
 
 	void HandleReturnItem(ItemReturnSpot spot)
 	{
-        LookAtTarget(spot.transform);
-        if (spot && hand)
+		LookAtTarget(spot.transform);
+		if (spot && hand)
 		{
-            if (spot.ReturnItem(hand))
+			if (spot.ReturnItem(hand))
 			{
-                hand = null;
+				hand = null;
 			}
 			return;
 		}
@@ -128,12 +132,13 @@ public class Player : MonoBehaviour
 		var itemSpot = obj.GetComponent<ItemSpot>();
 		_currentItemSpot = isOver ? itemSpot : null;
 	}
-    void LookAtTarget(Transform target) {
-        GameObject child = transform.GetChild(1).gameObject;
-        var currentRotation = child.transform.rotation.eulerAngles;
-        child.transform.LookAt(target.position);
-        child.transform.rotation.SetEulerAngles(0f, transform.rotation.eulerAngles.y, 0f);
-    }
+	void LookAtTarget(Transform target)
+	{
+		GameObject child = transform.GetChild(1).gameObject;
+		var currentRotation = child.transform.rotation.eulerAngles;
+		child.transform.LookAt(target.position);
+		child.transform.rotation.SetEulerAngles(0f, transform.rotation.eulerAngles.y, 0f);
+	}
 	void OnDrawGizmos()
 	{
 		if (!showGizmos) return;

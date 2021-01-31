@@ -18,6 +18,12 @@ ModelImporter:
   - first:
       74: 8945234803917980980
     second: Armature|npc_cheer
+  - first:
+      74: -4407559766503027472
+    second: npc_deny
+  - first:
+      74: 214904954624118492
+    second: Armature|npc_deny
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -57,18 +63,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: player_run
-      takeName: player_run
+      name: Armature|npc_deny
+      takeName: Armature|npc_deny
       internalID: 0
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
