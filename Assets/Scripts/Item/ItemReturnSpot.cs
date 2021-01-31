@@ -12,8 +12,8 @@ public class ItemReturnSpot : MonoBehaviour
 	public AudioClip successAudio;
 	public Item currentItem;
 
-	void Start(){
-		itemPreview.ChangeItem(list[0]);
+	void Awake(){
+		ChangeCurrentItemRandom();
 	}
 
     public bool ReturnItem(Item item){
@@ -31,7 +31,13 @@ public class ItemReturnSpot : MonoBehaviour
 		return true;
 	}
 
-	public bool CheckList(){
+	public void ChangeCurrentItemRandom(){
+		if(IsDone()) return;
+		var newItem = list.Find(x => !items.Contains(x));
+		itemPreview.ChangeItem(newItem);
+	}
+
+	public bool IsDone(){
 		return list.All(items.Contains);
 	}
 }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Battery
   m_EditorClassIdentifier: 
   name: Test
-  model: {fileID: 7916403994455307289, guid: c5c643bf466f1934c9bf46e477a182c2, type: 3}
+  portrait: {fileID: 21300000, guid: 5f7fa9a7940a64e79b5a42d9f661d42c, type: 3}
