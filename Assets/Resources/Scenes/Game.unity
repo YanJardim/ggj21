@@ -24414,6 +24414,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 702840060, guid: 037ec3686b0d25a4dbd06f5402a99214, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 0.7058824
+      objectReference: {fileID: 0}
     - target: {fileID: 3076006659930112992, guid: 037ec3686b0d25a4dbd06f5402a99214, type: 3}
       propertyPath: m_Name
       value: Player
