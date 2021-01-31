@@ -6,5 +6,5 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
 	public new string name;
-    public GameObject model;
+    public Sprite portrait;
 }
