@@ -60,6 +60,10 @@ public class Player : MonoBehaviour
 				isDigging = false;
 				return;
 			};
+			if(!_currentItemSpot.item){
+				isDigging = false;
+				return;
+			}
 			diggingTimer += Time.deltaTime;
 			if (diggingTimer > diggingTime)
 			{
