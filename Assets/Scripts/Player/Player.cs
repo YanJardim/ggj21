@@ -12,17 +12,16 @@ public class Player : MonoBehaviour
 	public LayerMask actionMask;
 	[Header("References")]
 	public PlayerWeapon shovel, metalDetector;
+	public Animator animator;
 	public Item hand;
 	private PlayerInputs _inputs;
 	private GameObject _spawnedWeapon;
 	private ItemSpot _currentItemSpot = null;
 	private ItemReturnSpot _currentItemReturnSpot = null;
-	private Animator _animator;
 	private float diggingTimer = 0;
 	void Awake()
 	{
 		_inputs = new PlayerInputs();
-		_animator = GetComponent<Animator>();
 		HandleActions();
 	}
 
@@ -76,7 +75,7 @@ public class Player : MonoBehaviour
 		{
 			diggingTimer = 0;
 		}
-		_animator.SetBool("isDigging", isDigging);
+		animator.SetBool("isDigging", isDigging);
 	}
 
 	void HandleInteraction()

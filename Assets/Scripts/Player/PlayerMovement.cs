@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 	public float rotateSpeed = 5;
 	[Header("References")]
 	public Transform modelTransform;
-	private Animator _anim;
+	public Animator Animator;
 	private Rigidbody _rb;
 	private Vector2 _dir = Vector2.zero;
 	private PlayerInputs _inputs;
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void Awake()
 	{
-		_anim = GetComponent<Animator>();
+		// _anim = GetComponent<Animator>();
 		_player = GetComponent<Player>();
 		_rb = GetComponent<Rigidbody>();
 		_inputs = new PlayerInputs();
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 	void Update()
 	{
 		HandleRotation();
-		_anim.SetBool("isRunning", _dir != Vector2.zero || _player.isDigging == true);
+		Animator.SetBool("isRunning", _dir != Vector2.zero || _player.isDigging == true);
 	}
 
 	// Update is called once per frame
