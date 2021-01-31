@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ReturnItem
   - TrashCan
+  - Chest
   layers:
   - Default
   - TransparentFX

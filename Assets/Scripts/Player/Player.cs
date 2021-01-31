@@ -103,6 +103,19 @@ public class Player : MonoBehaviour
 				case "TrashCan":
 					hand = null;
 					break;
+				case "Chest":
+					var chest = collider.GetComponent<Chest>();
+					if (chest.hasItem()){
+						var item = chest.Give();
+						itemPreview.ChangeItem(item);
+						hand = item;
+					}
+					else if (chest.Take(hand))
+					{
+						itemPreview.ChangeItem(null);
+						hand = null;
+					}
+					break;
 			}
 
 		}
@@ -117,6 +130,7 @@ public class Player : MonoBehaviour
 			if (spot.ReturnItem(hand))
 			{
 				hand = null;
+				itemPreview.ChangeItem(null);
 				animator.SetTrigger("cheer");
 			}
 			return;
