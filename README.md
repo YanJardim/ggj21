@@ -1,6 +1,7 @@
 
 Your village has been stolen by moles, they have hidden all the electronics in their holes. Try to find and return them to their owners!
 
+![Dig dig boy logo](/Assets/Resources/Textures/bg.png?raw=true)
 
 Is highly recommend to play with a gamepad!
 
@@ -16,6 +17,12 @@ Is highly recommend to play with a gamepad!
 - Hold left mouse click: Dig
 - Space: Give and store items
 -----------------------------------
+
+# Screenshots
+![Dig dig boy screenshot 1](/Assets/Screenshots/1.png?raw=true)
+![Dig dig boy screenshot 2](/Assets/Screenshots/2.png?raw=true)
+![Dig dig boy screenshot 3](/Assets/Screenshots/3.png?raw=true)
+![Dig dig boy screenshot 4](/Assets/Screenshots/4.png?raw=true)
 
 # Credits
 
