@@ -47,9 +47,16 @@ public class PlayerMovement : MonoBehaviour
 		HandleRotation();
         Animator.SetBool("isRunning", isRunning);
         if (isRunning != particle.isPlaying) {
+			if(_player.isDigging){
+				particle.Stop();
+				return;
+			}
             if (isRunning) particle.Play();
             else particle.Stop();
         }
+		else if(_player.isDigging){
+			particle.Stop();
+		}
 		
 	}
 
