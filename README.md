@@ -1,7 +1,9 @@
 
-Your village has been stolen by moles, they have hidden all the electronics in their holes. Try to find and return them to their owners!
+As the youngest Finder of Dig Dig Company you'll need to prove your worth by finding the villagers' lost items!
 
-![Dig dig boy logo](/Assets/Resources/Textures/bg.png?raw=true)
+![Dig dig boy logo](/Assets/Resources/Textures/bg.png)
+
+### [Play it now!](https://taj-tajima.itch.io/dig-dig-boy)
 
 Is highly recommend to play with a gamepad!
 
@@ -17,6 +19,9 @@ Is highly recommend to play with a gamepad!
 - Hold left mouse click: Dig
 - Space: Give and store items
 -----------------------------------
+
+# Tutorial
+![Dig dig boy tutorial 1](/Assets/Resources/Textures/tutorial2.png?raw=true)
 
 # Screenshots
 ![Dig dig boy screenshot 1](/Assets/Screenshots/1.png?raw=true)
