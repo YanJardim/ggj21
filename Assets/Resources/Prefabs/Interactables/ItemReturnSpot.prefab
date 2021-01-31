@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4831448560735141565}
   - component: {fileID: 4831448560735141564}
   - component: {fileID: 1314121550}
+  - component: {fileID: 8886153722845965542}
   m_Layer: 6
   m_Name: ItemReturnSpot
   m_TagString: Chest
@@ -112,6 +113,25 @@ MonoBehaviour:
   itemPreview: {fileID: 4154627262858651921}
   currentItem: {fileID: 0}
   nopeSound: {fileID: 8300000, guid: 80fd63e899ac0104ea11b9f6410b356e, type: 3}
+--- !u!95 &8886153722845965542
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4831448560735141563}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 33cfd88d00b85734d9606e9ffd85c50d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4831448561343054679
 PrefabInstance:
   m_ObjectHideFlags: 0
