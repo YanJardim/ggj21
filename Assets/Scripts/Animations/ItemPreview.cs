@@ -11,9 +11,14 @@ public class ItemPreview : MonoBehaviour
 	public float time = 2;
 	public Image image;
 	private RectTransform rectTransform;
+    private Transform parent;
+
+    public GameObject camera;
 
 	void Awake(){
 		rectTransform = transform.GetComponent<RectTransform>();
+        parent = transform.parent;
+        camera = Camera.main.gameObject;
 	}
     // Start is called before the first frame update
     void Start()
@@ -25,7 +30,7 @@ public class ItemPreview : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        parent.transform.LookAt(camera.transform);
     }
 
 	public void ChangeItem(Item item){
