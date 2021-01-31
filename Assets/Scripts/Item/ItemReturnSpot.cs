@@ -7,6 +7,8 @@ public class ItemReturnSpot : MonoBehaviour
 {
 	public List<Item> list;
 	public List<Item> items;
+	public Animator animator;
+	public AudioClip successAudio;
 
     public bool ReturnItem(Item item){
 		if(!list.Contains(item)) {
@@ -17,7 +19,8 @@ public class ItemReturnSpot : MonoBehaviour
 			Debug.LogWarning("We already have this item!");
 			return false;
 		}
-
+		animator.SetTrigger("success");
+		AudioManager.Instance.PlaySFX(successAudio);
 		items.Add(item);
 		return true;
 	}
