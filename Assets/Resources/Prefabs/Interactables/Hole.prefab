@@ -178,16 +178,16 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
+  looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0
+    scalar: 0.4
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -5040,8 +5040,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10353e801e6bbba42ad479f75e39f29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  item: {fileID: 11400000, guid: 134fe89e0985a454084e19b80879d575, type: 2}
   top: {fileID: 5361320548063778286}
+  particle: {fileID: 1322429146760534118}
 --- !u!65 &2832503574195612244
 BoxCollider:
   m_ObjectHideFlags: 0

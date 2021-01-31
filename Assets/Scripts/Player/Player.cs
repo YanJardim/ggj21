@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
 			{
 				stoppedDigSound = false;
 				_currentCoroutine = StartCoroutine(PlayDigSoundCoroutine());
+				_currentItemSpot.StartDig();
 			}
 
 			if (_currentItemSpot != null && _currentItemSpot.top)
@@ -96,6 +97,7 @@ public class Player : MonoBehaviour
 			stoppedDigSound = true;
 			startedDigSound = false;
 			if (_currentCoroutine != null) StopCoroutine(_currentCoroutine);
+			_currentItemSpot?.StopDig();
 			_currentCoroutine = null;
 		}
 		animator.SetBool("isDigging", isDigging);
