@@ -30,10 +30,13 @@ public class ItemPreview : MonoBehaviour
 
 	public void ChangeItem(Item item){
 		if(item == null) {
-			image.sprite = null;
+			image.enabled = false;
 			item = null;
+			GetComponent<Image>().enabled = false;
 			return;
 		}
+		GetComponent<Image>().enabled = true;
+		image.enabled = true;
 		image.sprite = item.portrait;
 		this.item = item;
 	}

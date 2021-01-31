@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 	public PlayerWeapon shovel, metalDetector;
 	public AudioClip diggingSound;
 	public Animator animator;
+	public ItemPreview itemPreview;
 	public Item hand;
 	private PlayerInputs _inputs;
 	private GameObject _spawnedWeapon;
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
 	{
 		_inputs = new PlayerInputs();
 		HandleActions();
+		itemPreview.ChangeItem(null);
 	}
 
 	void HandleActions()
@@ -75,6 +77,7 @@ public class Player : MonoBehaviour
 			if (diggingTimer > diggingTime)
 			{
 				hand = _currentItemSpot.Take();
+				itemPreview.ChangeItem(hand);
 				isDigging = false;
 				diggingTimer = 0;
 			}
