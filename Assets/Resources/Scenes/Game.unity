@@ -9908,6 +9908,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1827765335484654739, guid: f78ba7c4a69ecff439c9375ab53adeb6, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: afe0fffd4a64440449d85aeaf835036f, type: 2}
     - target: {fileID: 5862270148026867406, guid: f78ba7c4a69ecff439c9375ab53adeb6, type: 3}
       propertyPath: m_Name
       value: Hole
