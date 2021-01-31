@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
 	private PlayerInputs _inputs;
 	private Vector3 currentPos, previousPos;
 	private Player _player;
+
+    public ParticleSystem particle;
 	
 
 	void Awake()
@@ -37,11 +39,18 @@ public class PlayerMovement : MonoBehaviour
 	void OnEnable() => _inputs.Enable();
 	void OnDisable() => _inputs.Disable();
 
+    bool isRunning { get { return _dir != Vector2.zero || _player.isDigging == true; } }
+
 	// Start is called before the first frame update
 	void Update()
 	{
 		HandleRotation();
-		Animator.SetBool("isRunning", _dir != Vector2.zero || _player.isDigging == true);
+        Animator.SetBool("isRunning", isRunning);
+        if (isRunning != particle.isPlaying) {
+            if (isRunning) particle.Play();
+            else particle.Stop();
+        }
+		
 	}
 
 	// Update is called once per frame
