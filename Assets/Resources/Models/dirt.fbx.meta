@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e7810caa5ddbe3e41869e0a7258736b5
+guid: b5c57560ec650964dabc97b74fc704da
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mat_box
+      name: dirt
     second: {fileID: 2100000, guid: 73f120247f54c5d4584024fc8b42da4c, type: 2}
   materials:
     materialImportMode: 2
