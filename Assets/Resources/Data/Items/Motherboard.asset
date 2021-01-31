@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Motherboard
   m_EditorClassIdentifier: 
   name: Motherboard
-  portrait: {fileID: 21300000, guid: 5a32c52efb13f324e81dc3a417209113, type: 3}
+  portrait: {fileID: 21300000, guid: 557a030f2a8fbfd4eac8bc0b43bc5300, type: 3}

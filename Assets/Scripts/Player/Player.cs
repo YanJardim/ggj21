@@ -107,12 +107,14 @@ public class Player : MonoBehaviour
 
 	void HandleReturnItem(ItemReturnSpot spot)
 	{
-		LookAtTarget(spot.transform);
+		if (spot)
+			LookAtTarget(spot.transform);
 		if (spot && hand)
 		{
 			if (spot.ReturnItem(hand))
 			{
 				hand = null;
+				animator.SetTrigger("cheer");
 			}
 			return;
 		}

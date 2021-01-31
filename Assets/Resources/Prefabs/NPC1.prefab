@@ -178,10 +178,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list:
   - {fileID: 11400000, guid: 134fe89e0985a454084e19b80879d575, type: 2}
+  - {fileID: 11400000, guid: 345eb08cf20a4fb4faf8927550c58b8c, type: 2}
+  - {fileID: 11400000, guid: 70c6ebbac9560534687cee3ff6efe34b, type: 2}
+  - {fileID: 11400000, guid: afe0fffd4a64440449d85aeaf835036f, type: 2}
   items: []
-  animator: {fileID: 0}
-  itemPreview: {fileID: 0}
+  animator: {fileID: 8679958382048824574}
+  itemPreview: {fileID: 8679958381876254251}
   successAudio: {fileID: 8300000, guid: 164771a7a34a4b04394b9256c9f1c0da, type: 3}
+  nopeSound: {fileID: 8300000, guid: 80fd63e899ac0104ea11b9f6410b356e, type: 3}
   currentItem: {fileID: 0}
 --- !u!65 &389197872784063173
 BoxCollider:
@@ -737,7 +741,7 @@ Animator:
   m_GameObject: {fileID: 8409348573933313920}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d6f5110b88ca57947871bb9c6c170ac4, type: 2}
+  m_Controller: {fileID: 9100000, guid: dcddef30cb5d036429b9202bc9252f4a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -910,3 +914,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5384411173831728234, guid: a476d14053ce9b24f8b0cdde6a984cbc, type: 3}
   m_PrefabInstance: {fileID: 203114489733954669}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8679958381876254251 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8837456261247871558, guid: a476d14053ce9b24f8b0cdde6a984cbc, type: 3}
+  m_PrefabInstance: {fileID: 203114489733954669}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fce7219d01dde64cb8a763f78c2051f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

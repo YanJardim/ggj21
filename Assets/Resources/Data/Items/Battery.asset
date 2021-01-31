@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Battery
   m_EditorClassIdentifier: 
   name: Battery
-  portrait: {fileID: 21300000, guid: 5f7fa9a7940a64e79b5a42d9f661d42c, type: 3}
+  portrait: {fileID: 21300000, guid: 056c93a396fcf904b9b51df96e19c907, type: 3}
