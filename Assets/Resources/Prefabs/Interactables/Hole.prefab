@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 2b8ededeac464764db89d8074d02c0ba, type: 2}
+  top: {fileID: 5361320548063778286}
 --- !u!65 &2832503574195612244
 BoxCollider:
   m_ObjectHideFlags: 0

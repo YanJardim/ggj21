@@ -9,15 +9,18 @@ public class PlayerMovement : MonoBehaviour
 	public float speed = 5;
 	public float rotateSpeed = 5;
 	[Header("References")]
-	public Animator animator;
+	public Transform modelTransform;
+	private Animator _anim;
 	private Rigidbody _rb;
 	private Vector2 _dir = Vector2.zero;
 	private PlayerInputs _inputs;
 	private Vector3 currentPos, previousPos;
 	private Player _player;
+	
 
 	void Awake()
 	{
+		_anim = GetComponent<Animator>();
 		_player = GetComponent<Player>();
 		_rb = GetComponent<Rigidbody>();
 		_inputs = new PlayerInputs();
@@ -38,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 	void Update()
 	{
 		HandleRotation();
-		animator.SetBool("isRunning", _dir != Vector2.zero || _player.isDigging == true);
+		_anim.SetBool("isRunning", _dir != Vector2.zero || _player.isDigging == true);
 	}
 
 	// Update is called once per frame
@@ -46,17 +49,18 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if(_player.isDigging == true) return;
 		previousPos = currentPos;
-		currentPos = transform.position;
 		var newDir = new Vector3(_dir.x, 0, _dir.y);
+		newDir = Camera.main.transform.TransformDirection(newDir).normalized;
+		newDir.y = 0;
 		_rb.MovePosition(_rb.position + newDir * speed);
+		currentPos = transform.position;
 	}
 
 	void HandleRotation()
 	{
 		if(_dir == Vector2.zero) return;
-		var newRot = Quaternion.Normalize(Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(currentPos - previousPos), Time.fixedDeltaTime * rotateSpeed));
-		newRot.x = 0;
-		newRot.z = 0;
-		transform.rotation = newRot;
+		var newRot = Quaternion.Lerp(modelTransform.rotation, Quaternion.LookRotation(currentPos - previousPos), Time.deltaTime * rotateSpeed);
+		// newRot.eulerAngles = new Vector3(-90, 0, newRot.eulerAngles.y);
+		modelTransform.rotation = newRot;
 	}
 }
