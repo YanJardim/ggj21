@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
 	private ItemSpot _currentItemSpot = null;
 	private ItemReturnSpot _currentItemReturnSpot = null;
 	private float diggingTimer = 0;
+	private bool startedDigSound, stoppedDigSound;
+	private Coroutine _currentCoroutine;
 	void Awake()
 	{
 		_inputs = new PlayerInputs();
@@ -57,6 +59,12 @@ public class Player : MonoBehaviour
 	{
 		if (isDigging)
 		{
+			if (!startedDigSound && stoppedDigSound && _currentItemSpot)
+			{
+				stoppedDigSound = false;
+				_currentCoroutine = StartCoroutine(PlayDigSoundCoroutine());
+			}
+
 			if (_currentItemSpot != null && _currentItemSpot.top)
 			{
 				LookAtTarget(_currentItemSpot.top.transform);
@@ -85,6 +93,10 @@ public class Player : MonoBehaviour
 		else
 		{
 			diggingTimer = 0;
+			stoppedDigSound = true;
+			startedDigSound = false;
+			if (_currentCoroutine != null) StopCoroutine(_currentCoroutine);
+			_currentCoroutine = null;
 		}
 		animator.SetBool("isDigging", isDigging);
 	}
@@ -102,8 +114,9 @@ public class Player : MonoBehaviour
 					break;
 				case "Chest":
 					var chest = collider.GetComponent<Chest>();
-					if (chest.hasItem()){
-						if(hand) return;
+					if (chest.hasItem())
+					{
+						if (hand) return;
 						var item = chest.Give();
 						itemPreview.ChangeItem(item);
 						hand = item;
@@ -155,6 +168,16 @@ public class Player : MonoBehaviour
 		var currentRotation = child.transform.rotation.eulerAngles;
 		child.transform.LookAt(target.position);
 		child.transform.rotation.SetEulerAngles(0f, transform.rotation.eulerAngles.y, 0f);
+	}
+	IEnumerator PlayDigSoundCoroutine()
+	{
+		startedDigSound = true;
+		yield return new WaitForSeconds(0.65f);
+		AudioManager.Instance.PlaySFX(diggingSound);
+		yield return new WaitForSeconds(1.55f);
+		AudioManager.Instance.PlaySFX(diggingSound);
+		stoppedDigSound = true;
+
 	}
 	void OnDrawGizmos()
 	{
