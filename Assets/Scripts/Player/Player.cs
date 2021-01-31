@@ -54,7 +54,15 @@ public class Player : MonoBehaviour
 	{
 		if (isDigging)
 		{
-			if (_currentItemSpot == null || hand)
+            if (_currentItemSpot != null) {
+                GameObject child = transform.GetChild(1).gameObject;
+                Debug.Log(child.name);
+                var currentRotation = child.transform.rotation.eulerAngles;
+                child.transform.LookAt(_currentItemSpot.top.transform.position);
+                child.transform.rotation.SetEulerAngles(0f, transform.rotation.eulerAngles.y, 0f);
+            }
+           
+            if (_currentItemSpot == null || hand)
 			{
 				isDigging = false;
 				return;
