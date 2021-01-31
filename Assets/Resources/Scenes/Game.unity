@@ -17679,6 +17679,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1395590155997025920, guid: 746455cf113ad5e4fba85bbd57eb0e41, type: 3}
   m_PrefabInstance: {fileID: 1592157157}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1594605443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9006871864071643302, guid: 037ec3686b0d25a4dbd06f5402a99214, type: 3}
+  m_PrefabInstance: {fileID: 3159274739036154605}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fce7219d01dde64cb8a763f78c2051f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1596734748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23681,6 +23692,10 @@ PrefabInstance:
       propertyPath: showGizmos
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 107248950, guid: 037ec3686b0d25a4dbd06f5402a99214, type: 3}
+      propertyPath: itemPreview
+      value: 
+      objectReference: {fileID: 1594605443}
     - target: {fileID: 107248950, guid: 037ec3686b0d25a4dbd06f5402a99214, type: 3}
       propertyPath: diggingSound
       value: 
