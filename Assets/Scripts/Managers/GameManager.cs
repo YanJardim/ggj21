@@ -7,6 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
 	public List<ItemReturnSpot> npcs;
 	public event Action OnGameFinish;
+	public GameObject gameoverImage;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class GameManager : Singleton<GameManager>
 			Debug.Log($"Is ${npc.name} Done: {npc.IsDone()}");
 		});
 		if(npcsDone == npcs.Count){
+			gameoverImage.SetActive(true);
 			Debug.Log("Done!");
 			OnGameFinish?.Invoke();
 		}
