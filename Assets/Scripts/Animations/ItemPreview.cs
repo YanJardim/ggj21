@@ -29,6 +29,11 @@ public class ItemPreview : MonoBehaviour
     }
 
 	public void ChangeItem(Item item){
+		if(item == null) {
+			image.sprite = null;
+			item = null;
+			return;
+		}
 		image.sprite = item.portrait;
 		this.item = item;
 	}

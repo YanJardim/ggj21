@@ -27,12 +27,15 @@ public class ItemReturnSpot : MonoBehaviour
 		}
 		animator.SetTrigger("success");
 		AudioManager.Instance.PlaySFX(successAudio);
+		ChangeCurrentItemRandom();
 		items.Add(item);
 		return true;
 	}
 
 	public void ChangeCurrentItemRandom(){
-		if(IsDone()) return;
+		if(IsDone()){
+			itemPreview.ChangeItem(null);
+		};
 		var newItem = list.Find(x => !items.Contains(x));
 		itemPreview.ChangeItem(newItem);
 	}
