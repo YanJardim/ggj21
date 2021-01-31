@@ -47,6 +47,7 @@ public class ItemReturnSpot : MonoBehaviour
 		if (IsDone())
 		{
 			itemPreview.ChangeItem(null);
+			return;
 		};
 		var index = 0;
 		if (!currentItem)
@@ -57,6 +58,11 @@ public class ItemReturnSpot : MonoBehaviour
 		else
 		{
 			index = list.IndexOf(currentItem);
+		}
+		if (index + 1 >= list.Count)
+		{
+			itemPreview.ChangeItem(null);
+			return;
 		}
 		var newItem = list[++index];
 		itemPreview.ChangeItem(newItem);
