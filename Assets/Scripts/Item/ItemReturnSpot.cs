@@ -8,7 +8,13 @@ public class ItemReturnSpot : MonoBehaviour
 	public List<Item> list;
 	public List<Item> items;
 	public Animator animator;
+	public ItemPreview itemPreview;
 	public AudioClip successAudio;
+	public Item currentItem;
+
+	void Start(){
+		itemPreview.ChangeItem(list[0]);
+	}
 
     public bool ReturnItem(Item item){
 		if(!list.Contains(item)) {
