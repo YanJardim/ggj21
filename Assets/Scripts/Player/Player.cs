@@ -144,7 +144,7 @@ public class Player : MonoBehaviour
 			{
 				hand = null;
 				itemPreview.ChangeItem(null);
-				animator.SetTrigger("cheer");
+				// animator.SetTrigger("cheer");
 			}
 			return;
 		}
