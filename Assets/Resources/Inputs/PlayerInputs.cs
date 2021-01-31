@@ -345,7 +345,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
             ""id"": ""514f83da-af2f-460f-aa73-88a5040daa19"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Action"",
                     ""type"": ""Button"",
                     ""id"": ""f34afbbf-c854-4e03-84ea-57e35e04cf2f"",
                     ""expectedControlType"": ""Button"",
@@ -357,11 +357,22 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""38913bda-50ec-4ba0-b30f-260b7e238f05"",
-                    ""path"": """",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4627e39-7653-4475-8add-a906263bad33"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -410,7 +421,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_Game_Camera = m_Game.FindAction("Camera", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
-        m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
+        m_Menu_Action = m_Menu.FindAction("Action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -517,12 +528,12 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     // Menu
     private readonly InputActionMap m_Menu;
     private IMenuActions m_MenuActionsCallbackInterface;
-    private readonly InputAction m_Menu_Newaction;
+    private readonly InputAction m_Menu_Action;
     public struct MenuActions
     {
         private @PlayerInputs m_Wrapper;
         public MenuActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Menu_Newaction;
+        public InputAction @Action => m_Wrapper.m_Menu_Action;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -532,16 +543,16 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_MenuActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnNewaction;
+                @Action.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnAction;
+                @Action.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnAction;
+                @Action.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnAction;
             }
             m_Wrapper.m_MenuActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Action.started += instance.OnAction;
+                @Action.performed += instance.OnAction;
+                @Action.canceled += instance.OnAction;
             }
         }
     }
@@ -564,6 +575,6 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     }
     public interface IMenuActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnAction(InputAction.CallbackContext context);
     }
 }

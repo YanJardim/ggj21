@@ -332,7 +332,7 @@
             "id": "514f83da-af2f-460f-aa73-88a5040daa19",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Action",
                     "type": "Button",
                     "id": "f34afbbf-c854-4e03-84ea-57e35e04cf2f",
                     "expectedControlType": "Button",
@@ -344,11 +344,22 @@
                 {
                     "name": "",
                     "id": "38913bda-50ec-4ba0-b30f-260b7e238f05",
-                    "path": "",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4627e39-7653-4475-8add-a906263bad33",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
