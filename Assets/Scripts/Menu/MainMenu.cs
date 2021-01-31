@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
 		_inputs.Menu.Action.performed += ctx => NextImage();
 		ChangeImage(images[0]);
 		image = GetComponent<Image>();
+		image.preserveAspect = true;
 	}
 
 	void OnEnable() => _inputs.Enable();
