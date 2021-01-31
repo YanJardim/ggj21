@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
 			switch (collider.tag)
 			{
 				case "ReturnItem":
-					HandleReturnItem();
+					HandleReturnItem(collider.GetComponent<ItemReturnSpot>());
 					break;
 				case "TrashCan":
 					hand = null;
@@ -94,11 +94,11 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	void HandleReturnItem()
+	void HandleReturnItem(ItemReturnSpot spot)
 	{
-		if (_currentItemReturnSpot && hand)
+		if (spot && hand)
 		{
-			if (_currentItemReturnSpot.ReturnItem(hand))
+			if (spot.ReturnItem(hand))
 			{
 				hand = null;
 			}
