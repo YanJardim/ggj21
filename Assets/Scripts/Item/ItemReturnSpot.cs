@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemReturnSpot : TrackTrigger
+public class ItemReturnSpot : MonoBehaviour
 {
 	public List<Item> list;
 	public List<Item> items;

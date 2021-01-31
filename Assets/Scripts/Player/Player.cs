@@ -6,7 +6,10 @@ public class Player : MonoBehaviour
 {
 	[Header("Settings")]
 	public float diggingTime = 2;
+	public float sphereRadius = 10;
 	public bool isDigging = false;
+	public bool showGizmos = true;
+	public LayerMask actionMask;
 	[Header("References")]
 	public PlayerWeapon shovel, metalDetector;
 	public Item hand;
@@ -34,14 +37,12 @@ public class Player : MonoBehaviour
 	{
 		_inputs.Enable();
 		ItemSpot.OnPlayer += OnPlayerHitItemSpot;
-		ItemReturnSpot.OnPlayer += OnPlayerHitReturnSpot;
 	}
 
 	void OnDisable()
 	{
 		_inputs.Disable();
 		ItemSpot.OnPlayer -= OnPlayerHitItemSpot;
-		ItemReturnSpot.OnPlayer -= OnPlayerHitReturnSpot;
 	}
 
 	void Update()
@@ -76,13 +77,32 @@ public class Player : MonoBehaviour
 
 	void HandleInteraction()
 	{
-		Debug.Log($"Interaction {_currentItemReturnSpot?.name}");
+		Collider[] colliders = Physics.OverlapSphere(transform.position, sphereRadius, actionMask);
+		foreach (var collider in colliders)
+		{
+			Debug.Log($"Interaction {collider?.name}");
+			switch (collider.tag)
+			{
+				case "ReturnItem":
+					HandleReturnItem();
+					break;
+				case "TrashCan":
+					hand = null;
+					break;
+			}
+
+		}
+	}
+
+	void HandleReturnItem()
+	{
 		if (_currentItemReturnSpot && hand)
 		{
 			if (_currentItemReturnSpot.ReturnItem(hand))
 			{
 				hand = null;
 			}
+			return;
 		}
 	}
 
@@ -95,16 +115,16 @@ public class Player : MonoBehaviour
 	{
 		Destroy(_spawnedWeapon);
 	}
-
 	void OnPlayerHitItemSpot(bool isOver, GameObject obj)
 	{
 		var itemSpot = obj.GetComponent<ItemSpot>();
 		_currentItemSpot = isOver ? itemSpot : null;
 	}
-	void OnPlayerHitReturnSpot(bool isOver, GameObject obj)
+
+	void OnDrawGizmos()
 	{
-		Debug.Log($"Hit return {obj.name}");
-		var itemReturnSpot = obj.GetComponent<ItemReturnSpot>();
-		_currentItemReturnSpot = isOver ? itemReturnSpot : null;
+		if (!showGizmos) return;
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, sphereRadius);
 	}
 }
